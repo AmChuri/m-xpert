@@ -1,0 +1,184 @@
+
+
+.course-anchor{
+    color: white;
+}
+
+.course-anchor:hover{
+    color: white;
+}
+
+.pagination{
+    visibility: hidden;
+}
+.content{
+    height: 90%;
+}
+.myIcons{
+    float: left;
+    margin-right: 15px;
+}
+.footer{
+        position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+[data-target="#c-modal"],[data-target="#j-modal"]{
+    margin:0 !important;
+}
+
+.modal-title{
+	text-align: center;
+}
+.announcement-content>h3{
+   text-align: center;
+  }
+
+.day{
+    float: right;
+    text-transform: none;
+}
+
+.class-activity-box{
+    width: 85%;
+    margin: auto;
+}
+.activity-panel {
+	max-height: 100%;
+}
+/*::-webkit-scrollbar {
+    width: 12px;
+}
+ 
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+    border-radius: 10px;
+    position: relative;
+    right: 10px;
+}
+ 
+::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
+}*/
+
+#collapsingList>ul>li>a {
+	margin-left: 30px;
+}
+#collapsingList>ul>li>a>p {
+	font-size:11px;
+}
+#collapsingList>ul>li>a>.myIcons {
+	height:30px;
+}
+.title {
+	    float: left;
+    margin-top: 21px;
+    margin-left: 15px;
+}
+.title.visible-sm, .title.visible-xs {
+	   text-align: center;
+}
+.announcements {
+	padding-top: 10px !important;
+    padding-bottom: 10px !important;
+    padding: 10px;
+    background-color: white !important;
+    
+    border-radius: 5px;
+    text-align: center;
+   
+}
+.announcements>h4 {
+	margin: 0 !important;
+    text-align: center;
+}
+
+#add-members,.delete-members {
+	border: none !important;
+    background: transparent;
+
+    
+}
+
+#add-members>i,.delete-members>i {
+	font-size: 24px;
+    color: black;
+    
+}
+
+
+#invite-form {
+        text-align: center;
+
+}
+@media(min-width:768px)
+{
+    .announcements {
+	padding: 10px;
+    background-color: white !important;
+    width: 75%;
+    left: 12.5%;
+    position: relative;
+    border-radius: 5px;
+}
+
+#invite-form>.form-group{
+	width: 30%;
+    
+}
+
+#invite-form>.form-group>.form-control{
+    width: 100%;
+}
+
+
+.email-margin{
+    margin-left: 10px;
+}
+.email-field{
+ margin-left: 13px;
+}
+    }
+.display-none {
+	display:none !important;
+}
+
+@media (max-width: 992px)
+{
+.main-panel > .-content {
+    padding: 15px 50px !important;
+}
+}
+
+
+
+.btn-submit {
+	color: #00aeef !important;
+    background-color: transparent !important ;
+    border-radius: 30px !important;
+    border: 2px solid #00aeef !important;
+   margin-top: 10px;
+}
+
+.btn-submit:focus,.btn-submit:hover {
+	color: #00aeef !important;
+}
+.btn:focus{
+    outline: none !important;
+}
+
+.create-body {
+	text-align: center;
+}
+
+#create-modal {
+	top: 150px;
+}
+
+.announcement-content>h4 {
+	text-align: center;
+}
+.announcement-content {
+	padding:0 10px !important;
+}

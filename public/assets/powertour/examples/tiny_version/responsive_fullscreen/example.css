@@ -1,0 +1,35 @@
+/*set your own max width size */
+@media only screen and (max-width : 600px){
+	
+	/* hide default scrolling */
+	body[data-powertour-run]{
+		overflow:hidden;
+	}
+	
+	/* step wrapper + step */
+	.powertour-step,
+	.powertour-step > .single-step{
+		
+		/* override all positions */	
+		position          : fixed!important;		
+		top               : 0!important;		
+		right             : 0!important;		
+		bottom            : 0!important;
+		left              : 0!important;
+		margin            : 0!important;
+		
+		/* override all sizing */		
+		width             : 100%!important;
+		height            : 100%!important;		
+		
+		/* make inner scrollable (x-axis) */
+		overflow-x        : auto!important;
+
+		/* disable the fx in/out */		
+	    -webkit-animation : none!important;
+		-moz-animation    : none!important;
+		animation         : none!important;
+
+	}
+
+}

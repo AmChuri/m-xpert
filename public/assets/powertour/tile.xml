@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<browserconfig>
+    <msapplication>
+        <tile>
+            <square70x70logo src="images/mobile/windows-tile-70x70.png"/>
+            <square150x150logo src="images/mobile/windows-tile-150x150.png"/>
+            <wide310x150logo src="images/mobile/windows-tile-310x150.png"/>
+            <square310x310logo src="images/mobile/windows-tile-310x310.png"/>
+            <TileColor>#2d58a4</TileColor>
+        </tile>
+    </msapplication>
+</browserconfig>
+
+<!-- http://webdesign.tutsplus.com/tutorials/how-to-add-windows-tiles-to-your-website--cms-23099 -->

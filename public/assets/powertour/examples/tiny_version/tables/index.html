@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js"><head>
+    <meta charset="utf-8"/>
+    
+    <title>Power Tour - Demo</title>
+    
+    <!-- JQUERY CORE -->    
+    <script src="../../../js/assets/jquery-1.12.3.min.js"></script>            
+
+    <!-- POWERTOUR JS CORE -->    
+    <script src="../../../js/powertour/powertour.tiny.3.1.0.min.js"></script>
+    
+    <!-- POWERTOUR JS EXAMPLE(setup) -->    
+    <script src="example.js"></script> 
+    
+    <!-- DEMO(not needed) -->    
+    <script src="../../../js/assets/prettify.js"></script> 
+             
+    <!-- POWERTOUR CSS CORE -->
+    <link rel="stylesheet" href="../../../css/powertour/powertour.3.2.0.css"/>      
+    
+    <!-- POWERTOUR STYLING -->    
+    <link rel="stylesheet" href="../../../css/powertour/powertour-style-clean.css"/>
+    
+    <!-- POWERTOUR ANIMATIONS(optional if you are using fx) -->
+    <link rel="stylesheet" href="../../../css/powertour/animate.min.css"/>
+
+    <!-- DEMO(not needed) -->
+    <link rel="stylesheet" href="../../../css/assets/examples.css"/>
+    
+    <!-- DEMO(not needed) -->
+    <link rel="stylesheet" href="../../../css/assets/prettify.css"/>  
+
+</head>
+<body>
+    <div id="container">
+            
+        <header>        	
+            <h1>Tables</h1>
+            <p>
+            Basic setup tour consisting of 3 steps which are hooked to table cells. 
+            When using table cells you need to wrap the inner content of the selected cell before you can use them in a tour.
+            </p>
+            <p>In this example we make use of the 'powertour-active' class (2.7.0) to give each cell a different background color.</p>
+        </header>
+        
+		<h2>Trigger(s)</h2>  
+
+        <div class="trigger-wrap">
+            
+            <a href="javascript:void(0);" id="powertour-demo-trigger-id" class="trigger">
+                Run power tour
+                <span>(trigger)</span>
+            </a>
+            
+        </div>
+                
+        <h2>Example table</h2>        
+        
+        <div class="blocks">
+
+            <!-- demo table(demo) -->
+
+            <table>
+            	<thead>
+                	<tr>
+                    	<th>Name</th>
+                        <th>Value</th>
+                        <th>Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                	<tr>
+                    	<td><strong id="powertour-demo-cell-3">Ollie Tayler</strong></td>
+                        <td>Lorem ipsum dolor sit amet</td>
+                        <td>12/09/2015</td>                        
+                    </tr>
+                	<tr>
+                    	<td><strong>Dyson Elmo</strong></td>
+                        <td><div id="powertour-demo-cell-1">Nullam eget augue</div></td>
+                        <td>22/01/2014</td>                        
+                    </tr>
+                	<tr>
+                    	<td><strong>Sefton Darwin</strong></td>
+                        <td>Phasellus in</td>
+                        <td>10/10/2013</td>                        
+                    </tr>
+                	<tr>
+                    	<td><strong>Trevor Shawn</strong></td>
+                        <td>Aliquam orci quam</td>
+                        <td><div id="powertour-demo-cell-2">02/02/2013</div></td>                        
+                    </tr>
+                </tbody>            
+            </table>
+
+        </div>         
+        
+        <h2>Source code</h2>
+
+        <strong>Install</strong> | <a href="../../../documentation.html#doc-install-plugin" target="_blank">Documentation</a>
+        
+        <pre class="prettyprint lang-basic linenums">&lt;!-- PowerTour core stylesheet(required) --&gt;        
+&lt;link rel="stylesheet" href="css/powertour/powertour.3.2.0.css"/&gt;
+
+&lt;!-- PowerTour styling stylesheet (optional) --&gt;
+&lt;link rel="stylesheet" href="css/powertour/powertour-style-clean.css"/&gt;
+
+&lt;!-- CSS3 animations stylesheet(needed for animations) --&gt;
+&lt;link rel="stylesheet" href="css/powertour/animate.min.css"/&gt;
+
+&lt;!-- jQuery core (required) --&gt;
+&lt;script src="js/assets/jquery-1.12.3.min.js"&gt;&lt;/script&gt;
+
+&lt;!-- PowerTour plugin (required) --&gt;
+&lt;script src="js/powertour/powertour.tiny.3.1.0.min.js"&gt;&lt;/script&gt;</pre> 
+
+		<br/><br/>
+
+        <strong>Setup</strong> | <a href="../../../documentation.html#doc-setup-plugin" target="_blank">Documentation</a>
+ 
+       	<pre class="prettyprint lang-js linenums">$.powerTour({
+    tours : [
+        {
+            trigger            : '#powertour-demo-trigger-id',
+            startWith          : 1,
+            easyCancel         : true,
+            escKeyCancel       : true,
+            scrollHorizontal   : false,
+            keyboardNavigation : true,
+            highlightStartSpeed: 200,
+            highlightEndSpeed  : 200,
+            steps : [
+                  {
+                      hookTo          : '#powertour-demo-cell-1',
+                      content         : '#step-id-1',
+                      width           : 400,
+                      position        : 'bm',
+                      offsetY         : 20,
+                      offsetX         : 0,
+                      showStepDelay   : 0,
+                      center          : 'step',
+                      scrollDelay     : 0,
+                      highlight       : false
+                  },
+                  {
+                      hookTo          : '#powertour-demo-cell-2',
+                      content         : '#step-id-2',
+                      width           : 500,
+                      position        : 'tl',
+                      offsetY         : 200,
+                      offsetX         : -200,
+                      showStepDelay   : 0,
+                      center          : 'step',
+                      scrollDelay     : 0,
+                      highlight       : false
+                  },
+                  {
+                      hookTo          : '#powertour-demo-cell-3',
+                      content         : '#step-id-3',
+                      width           : 400,
+                      position        : 'rt',
+                      offsetY         : 20,
+                      offsetX         : 20,
+                      showStepDelay   : 0,
+                      center          : 'step',
+                      scrollDelay     : 0,
+                      highlight       : false
+                  }		
+            ]
+        }
+    ]
+});</pre>
+
+        <br/><br/>
+
+		<strong>Trigger(s)</strong> | <a href="../../../documentation.html#doc-tourtriggers" target="_blank">Documentation</a> 
+
+        <pre class="prettyprint lang-basic linenums">&lt;a href="#" id="powertour-demo-trigger-id"&gt;Run Power Tour&lt;/a&gt;</pre>  
+
+		<br/><br/>
+        
+        <strong>Steps</strong> | <a href="../../../documentation.html#doc-building-steps" target="_blank">Documentation</a>
+
+        <pre class="prettyprint lang-basic linenums">&lt;div class="single-step" id="step-id-1"&gt;
+    &lt;h3&gt;Step one&lt;/h3&gt;
+    &lt;p&gt;This is the first step. It should be located below (inc offsetY ) the yellow table cell.&lt;/p&gt;
+    &lt;br/&gt;
+    &lt;a href="#" data-powertour-action="next"&gt;Next step...&lt;/a&gt;
+&lt;/div&gt;
+
+&lt;div class="single-step" id="step-id-2"&gt;
+    &lt;h3&gt;Step two&lt;/h3&gt;
+    &lt;p&gt;This is the second step and should be located above the table itself, and the 'hookTo' element should be highlighted in green.&lt;/p&gt;
+    &lt;br/&gt;
+    &lt;a href="#" data-powertour-action="prev"&gt;Prev step&lt;/a&gt;
+    &lt;a href="#" data-powertour-action="next" style="float:right"&gt;Next step&lt;/a&gt;
+&lt;/div&gt;
+
+&lt;div class="single-step" id="step-id-3"&gt;
+    &lt;h3&gt;Step three&lt;/h3&gt;
+    &lt;p&gt;This is the third and last step and should be located next to the blue highlighted table cell.&lt;/p&gt;
+    &lt;br/&gt;
+    &lt;a href="#" data-powertour-action="prev"&gt;Prev step...&lt;/a&gt;
+    &lt;a href="#" data-powertour-action="stop" style="float:right"&gt;End tour&lt;/a&gt;
+&lt;/div&gt;</pre> 
+
+		<br/><br/>
+
+        <strong>Table</strong>
+        
+        <pre class="prettyprint lang-basic linenums" data-highlight-row="11,17,28">&lt;table&gt;
+    &lt;thead&gt;
+        &lt;tr&gt;
+            &lt;th&gt;Name&lt;/th&gt;
+            &lt;th&gt;Value&lt;/th&gt;
+            &lt;th&gt;Date&lt;/th&gt;
+        &lt;/tr&gt;
+    &lt;/thead&gt;
+    &lt;tbody&gt;
+        &lt;tr&gt;
+            &lt;td&gt;&lt;strong id="powertour-demo-cell-3"&gt;Ollie Tayler&lt;/strong&gt;&lt;/td&gt;
+            &lt;td&gt;Lorem ipsum dolor sit amet&lt;/td&gt;
+            &lt;td&gt;12/09/2015&lt;/td&gt;                        
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;&lt;strong&gt;Dyson Elmo&lt;/strong&gt;&lt;/td&gt;
+            &lt;td&gt;&lt;div id="powertour-demo-cell-1"&gt;Nullam eget augue&lt;/div&gt;&lt;/td&gt;
+            &lt;td&gt;22/01/2014&lt;/td&gt;                        
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;&lt;strong&gt;Sefton Darwin&lt;/strong&gt;&lt;/td&gt;
+            &lt;td&gt;Phasellus in&lt;/td&gt;
+            &lt;td&gt;10/10/2013&lt;/td&gt;                        
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;&lt;strong&gt;Trevor Shawn&lt;/strong&gt;&lt;/td&gt;
+            &lt;td&gt;Aliquam orci quam&lt;/td&gt;
+            &lt;td&gt;&lt;div id="powertour-demo-cell-2"&gt;02/02/2013&lt;/div&gt;&lt;/td&gt;                        
+        &lt;/tr&gt;
+    &lt;/tbody&gt;            
+&lt;/table&gt;</pre>
+        
+		<br/><br/>
+
+        <strong>Complete</strong>
+        
+        <pre class="prettyprint lang-basic linenums" data-highlight-row="95,101,112">&lt;html&gt;
+&lt;head&gt;       
+        
+    &lt;!-- PowerTour core stylesheet(required) --&gt;        
+    &lt;link rel="stylesheet" href="css/powertour/powertour.3.2.0.css"/&gt;
+    
+    &lt;!-- PowerTour styling stylesheet (optional) --&gt;
+    &lt;link rel="stylesheet" href="css/powertour/powertour-style-clean.css"/&gt;
+    
+    &lt;!-- CSS3 animations stylesheet(needed for animations) --&gt;
+    &lt;link rel="stylesheet" href="css/powertour/animate.min.css"/&gt;
+    
+    &lt;!-- jQuery core (required) --&gt;
+    &lt;script src="js/assets/jquery-1.12.3.min.js"&gt;&lt;/script&gt;
+    
+    &lt;!-- PowerTour plugin (required) --&gt;
+    &lt;script src="js/powertour/powertour.tiny.3.1.0.min.js"&gt;&lt;/script&gt;
+
+    &lt;script&gt;	
+        $(document).ready(function($){
+            $.powerTour({
+                tours : [
+                    {
+                        trigger            : '#powertour-demo-trigger-id',
+                        startWith          : 1,
+                        easyCancel         : true,
+                        escKeyCancel       : true,
+                        scrollHorizontal   : false,
+                        keyboardNavigation : true,
+                        highlightStartSpeed: 200,
+                        highlightEndSpeed  : 200,
+                        steps : [
+                              {
+                                  hookTo          : '#powertour-demo-cell-1',
+                                  content         : '#step-id-1',
+                                  width           : 400,
+                                  position        : 'bm',
+                                  offsetY         : 20,
+                                  offsetX         : 0,
+                                  showStepDelay   : 0,
+                                  center          : 'step',
+                                  scrollDelay     : 0,
+                                  highlight       : false
+                              },
+                              {
+                                  hookTo          : '#powertour-demo-cell-2',
+                                  content         : '#step-id-2',
+                                  width           : 500,
+                                  position        : 'tl',
+                                  offsetY         : 200,
+                                  offsetX         : -200,
+                                  showStepDelay   : 0,
+                                  center          : 'step',
+                                  scrollDelay     : 0,
+                                  highlight       : false
+                              },
+                              {
+                                  hookTo          : '#powertour-demo-cell-3',
+                                  content         : '#step-id-3',
+                                  width           : 400,
+                                  position        : 'rt',
+                                  offsetY         : 20,
+                                  offsetX         : 20,
+                                  showStepDelay   : 0,
+                                  center          : 'step',
+                                  scrollDelay     : 0,
+                                  highlight       : false
+                              }		
+                        ]
+                    }
+                ]
+            });	
+        });
+    &lt;/script&gt;
+
+&lt;/head&gt; 
+&lt;body&gt; 
+
+	&lt;!-- trigger --&gt;
+    
+	&lt;a href="#" id="powertour-demo-trigger-id"&gt;Run Power Tour&lt;/a&gt;
+
+	&lt;!-- hookTo --&gt;
+    
+    &lt;table&gt;
+        &lt;thead&gt;
+            &lt;tr&gt;
+                &lt;th&gt;Name&lt;/th&gt;
+                &lt;th&gt;Value&lt;/th&gt;
+                &lt;th&gt;Date&lt;/th&gt;
+            &lt;/tr&gt;
+        &lt;/thead&gt;
+        &lt;tbody&gt;
+            &lt;tr&gt;
+                &lt;td&gt;&lt;strong id="powertour-demo-cell-3"&gt;Ollie Tayler&lt;/strong&gt;&lt;/td&gt;
+                &lt;td&gt;Lorem ipsum dolor sit amet&lt;/td&gt;
+                &lt;td&gt;12/09/2015&lt;/td&gt;                        
+            &lt;/tr&gt;
+            &lt;tr&gt;
+                &lt;td&gt;&lt;strong&gt;Dyson Elmo&lt;/strong&gt;&lt;/td&gt;
+                &lt;td&gt;&lt;div id="powertour-demo-cell-1"&gt;Nullam eget augue&lt;/div&gt;&lt;/td&gt;
+                &lt;td&gt;22/01/2014&lt;/td&gt;                        
+            &lt;/tr&gt;
+            &lt;tr&gt;
+                &lt;td&gt;&lt;strong&gt;Sefton Darwin&lt;/strong&gt;&lt;/td&gt;
+                &lt;td&gt;Phasellus in&lt;/td&gt;
+                &lt;td&gt;10/10/2013&lt;/td&gt;                        
+            &lt;/tr&gt;
+            &lt;tr&gt;
+                &lt;td&gt;&lt;strong&gt;Trevor Shawn&lt;/strong&gt;&lt;/td&gt;
+                &lt;td&gt;Aliquam orci quam&lt;/td&gt;
+                &lt;td&gt;&lt;div id="powertour-demo-cell-2"&gt;02/02/2013&lt;/div&gt;&lt;/td&gt;                        
+            &lt;/tr&gt;
+        &lt;/tbody&gt;            
+    &lt;/table&gt;
+                
+    &lt;!-- steps(content) --&gt; 
+    
+    &lt;div class="single-step" id="step-id-1"&gt;
+        &lt;h3&gt;Step one&lt;/h3&gt;
+        &lt;p&gt;This is the first step. It should be located below (inc offsetY ) the yellow table cell.&lt;/p&gt;
+        &lt;br/&gt;
+        &lt;a href="#" data-powertour-action="next"&gt;Next step...&lt;/a&gt;
+    &lt;/div&gt;
+    
+    &lt;div class="single-step" id="step-id-2"&gt;
+        &lt;h3&gt;Step two&lt;/h3&gt;
+        &lt;p&gt;This is the second step and should be located above the table itself, and the 'hookTo' element should be highlighted in green.&lt;/p&gt;
+        &lt;br/&gt;
+        &lt;a href="#" data-powertour-action="prev"&gt;Prev step&lt;/a&gt;
+        &lt;a href="#" data-powertour-action="next" style="float:right"&gt;Next step&lt;/a&gt;
+    &lt;/div&gt;
+    
+    &lt;div class="single-step" id="step-id-3"&gt;
+        &lt;h3&gt;Step three&lt;/h3&gt;
+        &lt;p&gt;This is the third and last step and should be located next to the blue highlighted table cell.&lt;/p&gt;
+        &lt;br/&gt;
+        &lt;a href="#" data-powertour-action="prev"&gt;Prev step...&lt;/a&gt;
+        &lt;a href="#" data-powertour-action="stop" style="float:right"&gt;End tour&lt;/a&gt;
+    &lt;/div&gt;
+
+&lt;/body&gt; 
+&lt;/html&gt;</pre> 
+ 
+    </div><!-- end #container --> 
+    
+    <!-- below this line are the steps -->
+    
+        <div class="single-step" id="step-id-1">
+            <h3>Step one</h3>
+            <p>This is the first step. It should be located below (inc offsetY ) the yellow table cell.</p>
+            <br/>
+            <a href="#" data-powertour-action="next">Next step...</a>
+        </div>
+        
+        <div class="single-step" id="step-id-2">
+            <h3>Step two</h3>
+            <p>This is the second step and should be located above the table itself, and the 'hookTo' element should be highlighted in green.</p>
+            <br/>
+            <a href="#" data-powertour-action="prev">Prev step</a>
+            <a href="#" data-powertour-action="next" style="float:right">Next step</a>
+        </div>
+        
+        <div class="single-step" id="step-id-3">
+            <h3>Step three</h3>
+            <p>This is the third and last step and should be located next to the blue highlighted table cell.</p>
+            <br/>
+            <a href="#" data-powertour-action="prev">Prev step...</a>
+            <a href="#" data-powertour-action="stop" style="float:right">End tour</a>
+        </div> 
+                              
+</body>
+</html>

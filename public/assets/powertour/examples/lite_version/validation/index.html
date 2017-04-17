@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js"><head>
+    <meta charset="utf-8"/>
+    
+    <title>Power Tour - Demo</title>
+    
+    <!-- JQUERY CORE -->    
+    <script src="../../../js/assets/jquery-1.12.3.min.js"></script>            
+
+    <!-- POWERTOUR JS CORE -->    
+    <script src="../../../js/powertour/powertour.lite.3.1.0.min.js"></script>
+    
+    <!-- POWERTOUR JS EXAMPLE(setup) -->    
+    <script src="example.js"></script> 
+    
+    <!-- DEMO(not needed) -->    
+    <script src="../../../js/assets/prettify.js"></script> 
+             
+    <!-- POWERTOUR CSS CORE -->
+    <link rel="stylesheet" href="../../../css/powertour/powertour.3.2.0.css"/>      
+    
+    <!-- POWERTOUR STYLING -->    
+    <link rel="stylesheet" href="../../../css/powertour/powertour-style-clean.css"/>
+    
+    <!-- POWERTOUR ANIMATIONS(optional if you are using fx) -->
+    <link rel="stylesheet" href="../../../css/powertour/animate.min.css"/>
+
+    <!-- DEMO(not needed) -->
+    <link rel="stylesheet" href="../../../css/assets/examples.css"/>
+    
+    <!-- DEMO(not needed) -->
+    <link rel="stylesheet" href="../../../css/assets/prettify.css"/>  
+
+</head>
+<body>
+    <div id="container">
+            
+        <header>
+            <h1>Validation</h1>
+            <p>Basic setup tour consisting of 3 steps with validation. You can use the 'onShowStep' and 'onHideStep' callback functions to 
+            validate every step if needed.</p>
+            <p>&nbsp;</p>
+            <p><strong>More help:</strong> <a href="../../../extend.html#extend-validation" target="_blank">Validation</a></p>
+        </header>
+        
+		<h2>Trigger(s)</h2>  
+
+        <div class="trigger-wrap">
+            
+            <a href="javascript:void(0);" id="powertour-demo-trigger-id" class="trigger">
+                Run power tour
+                <span>(trigger)</span>
+            </a>
+            
+        </div>
+                
+        <h2>Example blocks</h2>        
+        
+        <div class="blocks">
+
+            <!-- demo box(demo) -->
+            
+            <div class="powertour-demo-box" id="powertour-demo-box-1">
+                <p>Demo box 1</p>
+                <span>(hookTo)</span>
+            </div>    
+        
+            <div class="powertour-demo-box" id="powertour-demo-box-2">
+                <p>Demo box 2</p>
+                <span>(hookTo)</span>
+            </div> 
+             
+            <div class="powertour-demo-box" id="powertour-demo-box-3">
+                <p>Demo box 3</p>
+                <span>(hookTo)</span>
+            </div>
+            
+        </div>         
+        
+        <h2>Source code</h2>
+
+        <strong>Install</strong> | <a href="../../../documentation.html#doc-install-plugin" target="_blank">Documentation</a>
+        
+        <pre class="prettyprint lang-basic linenums">&lt;!-- PowerTour core stylesheet(required) --&gt;        
+&lt;link rel="stylesheet" href="css/powertour/powertour.3.2.0.css"/&gt;
+
+&lt;!-- PowerTour styling stylesheet (optional) --&gt;
+&lt;link rel="stylesheet" href="css/powertour/powertour-style-clean.css"/&gt;
+
+&lt;!-- CSS3 animations stylesheet(needed for animations) --&gt;
+&lt;link rel="stylesheet" href="css/powertour/animate.min.css"/&gt;
+
+&lt;!-- jQuery core (required) --&gt;
+&lt;script src="js/assets/jquery-1.12.3.min.js"&gt;&lt;/script&gt;
+
+&lt;!-- PowerTour plugin (required) --&gt;
+&lt;script src="js/powertour/powertour.lite.3.1.0.min.js"&gt;&lt;/script&gt;</pre> 
+
+		<br/><br/>
+
+        <strong>Setup</strong> | <a href="../../../documentation.html#doc-setup-plugin" target="_blank">Documentation</a>
+ 
+       	<pre class="prettyprint lang-js linenums" data-highlight-row="36-56, 61-65, 88-113, 118-123, 146-166, 171-175">$.powerTour({
+    tours : [
+        {
+            trigger            : '#powertour-demo-trigger-id',
+            startWith          : 1,
+            easyCancel         : true,
+            escKeyCancel       : true,
+            scrollHorizontal   : false,
+            keyboardNavigation : true,
+            loopTour           : false,
+            highlightStartSpeed: 200,
+            highlightEndSpeed  : 200,
+            onStartTour        : function(ui){ },
+            onEndTour          : function(ui){ },	
+            onProgress         : function(ui){ },
+            steps : [
+                  {
+                      hookTo          : '#powertour-demo-box-1',
+                      content         : '#step-id-1',
+                      width           : 400,
+                      position        : 'bm',
+                      offsetY         : 20,
+                      offsetX         : 0,
+                      fxIn            : 'flipInX',
+                      fxOut           : 'bounceOutLeft',
+                      showStepDelay   : 0,
+                      center          : 'step',
+                      scrollSpeed     : 400,
+                      scrollEasing    : 'swing',
+                      scrollDelay     : 0,
+                      highlight       : false,
+                      keepHighlighted : false,
+                      keepVisible     : false,
+                      onShowStep      : function(ui){
+                                                   
+                          // button variable
+                          var nextBtn = ui.currentStep.find('[data-powertour-action="next"]');
+                          
+                          // disable the next button at default
+                          $('body').attr('data-powertour-disable-next', true);
+                          
+                          // add a visual class to the button at default(not required)
+                          nextBtn.addClass('btn-disable');
+                          
+                          // validate the input
+                          $('#step-validation-input-1').keyup(function(e){
+                              if($(this).val().length > 3){
+                                  
+                                  // enable the next button 
+                                  $('body').removeAttr('data-powertour-disable-next');
+                          
+                                  // remove the visual class from the button(not required)
+                                  nextBtn.removeClass('btn-disable');
+                          
+                              }
+                          });
+  
+                      },
+                      onHideStep      : function(ui){
+                          
+                          // remove the next button again
+                          $('body').removeAttr('data-powertour-disable-next');
+                          
+                          // clear the input after
+                          $('#step-validation-input-1').val(''); 
+    
+                      }                      
+                  },
+                  {
+                      hookTo          : '#powertour-demo-box-2',
+                      content         : '#step-id-2',
+                      width           : 300,
+                      position        : 'lt',
+                      offsetY         : 0,
+                      offsetX         : 20,
+                      fxIn            : 'fadeIn',
+                      fxOut           : 'fadeOut',
+                      showStepDelay   : 0,
+                      center          : 'step',
+                      scrollSpeed     : 400,
+                      scrollEasing    : 'swing',
+                      scrollDelay     : 0,
+                      highlight       : true,
+                      keepHighlighted : false,
+                      keepVisible     : false,
+                      onShowStep      : function(ui){
+
+                          // button variable
+                          var prevBtn = ui.currentStep.find('[data-powertour-action="prev"]');
+                          var nextBtn = ui.currentStep.find('[data-powertour-action="next"]');						  
+                          
+                          // disable the prev/next button at default
+                          $('body').attr('data-powertour-disable-prev', true);
+                          $('body').attr('data-powertour-disable-next', true);
+                          
+                          // add a visual class to the button at default(not required)
+                          prevBtn.addClass('btn-disable');
+                          nextBtn.addClass('btn-disable');
+                          
+                          // validate the input
+                          $('#step-validation-input-2').keyup(function(e){
+                              if($(this).val().length > 3){
+                                  
+                                  // enable the prev/next button 
+                                  $('body').removeAttr('data-powertour-disable-prev');
+                                  $('body').removeAttr('data-powertour-disable-next');
+                           
+                                  // remove the visual class from the button(not required)
+                                  prevBtn.removeClass('btn-disable');
+                                  nextBtn.removeClass('btn-disable');
+                          
+                              }
+                          });
+                            
+                      },
+                      onHideStep      : function(ui){
+                          
+                          // remove the prev/next button again
+                          $('body').removeAttr('data-powertour-disable-prev');
+                          $('body').removeAttr('data-powertour-disable-next');
+                          
+                          // clear the input after
+                          $('#step-validation-input-2').val(''); 
+    
+                      }
+                  },
+                  {
+                      hookTo          : '#powertour-demo-box-3',
+                      content         : '#step-id-3',
+                      width           : 400,
+                      position        : 'tr',
+                      offsetY         : -80,
+                      offsetX         : 40,
+                      fxIn            : 'rotateIn',
+                      fxOut           : 'rotateOut',
+                      showStepDelay   : 0,
+                      center          : 'step',
+                      scrollSpeed     : 400,
+                      scrollEasing    : 'swing',
+                      scrollDelay     : 0,
+                      highlight       : false,
+                      keepHighlighted : false,
+                      keepVisible     : false,
+                      onShowStep      : function(ui){
+                          
+                          // button variable
+                          var prevBtn = ui.currentStep.find('[data-powertour-action="prev"]');				  
+                          
+                          // disable the prev button at default
+                          $('body').attr('data-powertour-disable-prev', true);
+                          
+                          // add a visual class to the button at default(not required)
+                          prevBtn.addClass('btn-disable');
+                          
+                          // validate the input
+                          $('#step-validation-input-3').keyup(function(e){
+                              if($(this).val().length > 3){
+                                  
+                                  // enable the next button 
+                                  $('body').removeAttr('data-powertour-disable-prev');
+                          
+                                  // remove the visual class from the button(not required)
+                                  prevBtn.removeClass('btn-disable');
+                          
+                              }
+                          }); 
+                          
+                      },
+                      onHideStep      : function(ui){ 
+                      
+                          // remove the prev button again
+                          $('body').removeAttr('data-powertour-disable-prev');
+                          
+                          // clear the input after
+                          $('#step-validation-input-3').val(''); 
+                      
+                      }
+                  }		
+            ]
+        }
+    ]
+});</pre>
+
+        <br/><br/>
+
+		<strong>Trigger(s)</strong> | <a href="../../../documentation.html#doc-tourtriggers" target="_blank">Documentation</a> 
+
+        <pre class="prettyprint lang-basic linenums">&lt;a href="#" id="powertour-demo-trigger-id"&gt;Run Power Tour&lt;/a&gt;</pre>  
+
+		<br/><br/>
+        
+        <strong>Steps</strong> | <a href="../../../documentation.html#doc-building-steps" target="_blank">Documentation</a>
+
+        <pre class="prettyprint lang-basic linenums" data-highlight-row="5, 15,26">&lt;div class="single-step" id="step-id-1"&gt;
+    &lt;h3&gt;Step one&lt;/h3&gt;
+    &lt;p&gt;This is the first step. It should be located below (inc offsetY ) the 'demo box 1' example blocks.&lt;/p&gt;
+    &lt;br/&gt;
+    &lt;input type="text" class="input-field" placeholder="Enter something here" id="step-validation-input-1"/&gt;
+    &lt;br/&gt;
+    &lt;br/&gt;
+    &lt;a href="#" data-powertour-action="next"&gt;Next step...&lt;/a&gt;
+&lt;/div&gt;
+
+&lt;div class="single-step" id="step-id-2"&gt;
+    &lt;h3&gt;Step two&lt;/h3&gt;
+    &lt;p&gt;This is the second step and should be located next to (left side) 'demo box 2' example blocks. This step highlights the step and hookTo element.&lt;/p&gt;
+    &lt;br/&gt;
+    &lt;input type="text" class="input-field" placeholder="Enter something here" id="step-validation-input-2"/&gt;
+    &lt;br/&gt;
+    &lt;br/&gt;
+    &lt;a href="#" data-powertour-action="prev"&gt;Prev step&lt;/a&gt;
+    &lt;a href="#" data-powertour-action="next" style="float:right"&gt;Next step&lt;/a&gt;
+&lt;/div&gt;
+
+&lt;div class="single-step" id="step-id-3"&gt;
+    &lt;h3&gt;Step three&lt;/h3&gt;
+    &lt;p&gt;This is the third and last step and should be located above and over the 'demo box 3' example blocks with the use of the 'offsetY' and 'offsetX' options.&lt;/p&gt;
+    &lt;br/&gt;
+    &lt;input type="text" class="input-field" placeholder="Enter something here" id="step-validation-input-3"/&gt;
+    &lt;br/&gt;
+    &lt;br/&gt;
+    &lt;a href="#" data-powertour-action="prev"&gt;Prev step...&lt;/a&gt;
+    &lt;a href="#" data-powertour-action="stop" style="float:right"&gt;End tour&lt;/a&gt;
+&lt;/div&gt;</pre> 
+ 
+		<br/><br/>
+
+        <strong>Complete</strong>
+        
+        <pre class="prettyprint lang-basic linenums" data-highlight-row="57-77, 82-86, 111-136, 141-146, 170-190, 195-199, 261, 271, 282">&lt;html&gt;
+&lt;head&gt;       
+        
+    &lt;!-- PowerTour core stylesheet(required) --&gt;        
+    &lt;link rel="stylesheet" href="css/powertour/powertour.3.2.0.css"/&gt;
+    
+    &lt;!-- PowerTour styling stylesheet (optional) --&gt;
+    &lt;link rel="stylesheet" href="css/powertour/powertour-style-clean.css"/&gt;
+    
+    &lt;!-- CSS3 animations stylesheet(needed for animations) --&gt;
+    &lt;link rel="stylesheet" href="css/powertour/animate.min.css"/&gt;
+    
+    &lt;!-- jQuery core (required) --&gt;
+    &lt;script src="js/assets/jquery-1.12.3.min.js"&gt;&lt;/script&gt;
+    
+    &lt;!-- PowerTour plugin (required) --&gt;
+    &lt;script src="js/powertour/powertour.lite.3.1.0.min.js"&gt;&lt;/script&gt;
+
+    &lt;script&gt;	
+        $(document).ready(function($){
+            $.powerTour({
+                tours : [
+                    {
+                        trigger            : '#powertour-demo-trigger-id',
+                        startWith          : 1,
+                        easyCancel         : true,
+                        escKeyCancel       : true,
+                        scrollHorizontal   : false,
+                        keyboardNavigation : true,
+                        loopTour           : false,
+                        highlightStartSpeed: 200,
+                        highlightEndSpeed  : 200,
+                        onStartTour        : function(ui){ },
+                        onEndTour          : function(ui){ },	
+                        onProgress         : function(ui){ },
+                        steps : [
+                              {
+                                  hookTo          : '#powertour-demo-box-1',
+                                  content         : '#step-id-1',
+                                  width           : 400,
+                                  position        : 'bm',
+                                  offsetY         : 20,
+                                  offsetX         : 0,
+                                  fxIn            : 'flipInX',
+                                  fxOut           : 'bounceOutLeft',
+                                  showStepDelay   : 0,
+                                  center          : 'step',
+                                  scrollSpeed     : 400,
+                                  scrollEasing    : 'swing',
+                                  scrollDelay     : 0,
+                                  highlight       : false,
+                                  keepHighlighted : false,
+                                  keepVisible     : false,
+                                  onShowStep      : function(ui){                                     
+                                      
+                                      // button variable
+                                      var nextBtn = ui.currentStep.find('[data-powertour-action="next"]');
+                                      
+                                      // disable the next button at default
+                                      $('body').attr('data-powertour-disable-next', true);
+                                      
+                                      // add a visual class to the button at default(not required)
+                                      nextBtn.addClass('btn-disable');
+                                      
+                                      // validate the input
+                                      $('#step-validation-input-1').keyup(function(e){
+                                          if($(this).val().length > 3){
+                                              
+                                              // enable the next button 
+                                              $('body').removeAttr('data-powertour-disable-next');
+                                      
+                                              // remove the visual class from the button(not required)
+                                              nextBtn.removeClass('btn-disable');
+                                      
+                                          }
+                                      });
+              
+                                  },
+                                  onHideStep      : function(ui){
+                                      
+                                      // remove the next button again
+                                      $('body').removeAttr('data-powertour-disable-next');
+                                      
+                                      // clear the input after
+                                      $('#step-validation-input-1').val(''); 
+                
+                                  }
+                                  
+                              },
+                              {
+                                  hookTo          : '#powertour-demo-box-2',
+                                  content         : '#step-id-2',
+                                  width           : 300,
+                                  position        : 'lt',
+                                  offsetY         : 0,
+                                  offsetX         : 20,
+                                  fxIn            : 'fadeIn',
+                                  fxOut           : 'fadeOut',
+                                  showStepDelay   : 0,
+                                  center          : 'step',
+                                  scrollSpeed     : 400,
+                                  scrollEasing    : 'swing',
+                                  scrollDelay     : 0,
+                                  highlight       : true,
+                                  keepHighlighted : false,
+                                  keepVisible     : false,
+                                  onShowStep      : function(ui){
+        
+                                      // button variable
+                                      var prevBtn = ui.currentStep.find('[data-powertour-action="prev"]');
+                                      var nextBtn = ui.currentStep.find('[data-powertour-action="next"]');						  
+                                      
+                                      // disable the prev/next button at default
+                                      $('body').attr('data-powertour-disable-prev', true);
+                                      $('body').attr('data-powertour-disable-next', true);
+                                      
+                                      // add a visual class to the button at default(not required)
+                                      prevBtn.addClass('btn-disable');
+                                      nextBtn.addClass('btn-disable');
+                                      
+                                      // validate the input
+                                      $('#step-validation-input-2').keyup(function(e){
+                                          if($(this).val().length > 3){
+                                              
+                                              // enable the prev/next button 
+                                              $('body').removeAttr('data-powertour-disable-prev');
+                                              $('body').removeAttr('data-powertour-disable-next');
+                                       
+                                              // remove the visual class from the button(not required)
+                                              prevBtn.removeClass('btn-disable');
+                                              nextBtn.removeClass('btn-disable');
+                                      
+                                          }
+                                      });
+                                        
+                                  },
+                                  onHideStep      : function(ui){
+                                      
+                                      // remove the prev/next button again
+                                      $('body').removeAttr('data-powertour-disable-prev');
+                                      $('body').removeAttr('data-powertour-disable-next');
+                                      
+                                      // clear the input after
+                                      $('#step-validation-input-2').val(''); 
+                
+                                  }
+                              },
+                              {
+                                  hookTo          : '#powertour-demo-box-3',
+                                  content         : '#step-id-3',
+                                  width           : 400,
+                                  position        : 'tr',
+                                  offsetY         : -80,
+                                  offsetX         : 40,
+                                  fxIn            : 'rotateIn',
+                                  fxOut           : 'rotateOut',
+                                  showStepDelay   : 0,
+                                  center          : 'step',
+                                  scrollSpeed     : 400,
+                                  scrollEasing    : 'swing',
+                                  scrollDelay     : 0,
+                                  highlight       : false,
+                                  keepHighlighted : false,
+                                  keepVisible     : false,
+                                  onShowStep      : function(ui){
+                                      
+                                      // button variable
+                                      var prevBtn = ui.currentStep.find('[data-powertour-action="prev"]');				  
+                                      
+                                      // disable the prev button at default
+                                      $('body').attr('data-powertour-disable-prev', true);
+                                      
+                                      // add a visual class to the button at default(not required)
+                                      prevBtn.addClass('btn-disable');
+                                      
+                                      // validate the input
+                                      $('#step-validation-input-3').keyup(function(e){
+                                          if($(this).val().length > 3){
+                                              
+                                              // enable the next button 
+                                              $('body').removeAttr('data-powertour-disable-prev');
+                                      
+                                              // remove the visual class from the button(not required)
+                                              prevBtn.removeClass('btn-disable');
+                                      
+                                          }
+                                      }); 
+                                      
+                                  },
+                                  onHideStep      : function(ui){ 
+                                  
+                                      // remove the prev button again
+                                      $('body').removeAttr('data-powertour-disable-prev');
+                                      
+                                      // clear the input after
+                                      $('#step-validation-input-3').val(''); 
+                                  
+                                  }
+                              }		
+                        ]
+                    }
+                ]
+            });	
+        });
+    &lt;/script&gt;
+
+&lt;/head&gt; 
+&lt;body&gt; 
+
+	&lt;!-- trigger --&gt;
+    
+	&lt;a href="#" id="powertour-demo-trigger-id"&gt;Run Power Tour&lt;/a&gt;
+
+	&lt;!-- hookTo --&gt;
+    
+    &lt;div class="powertour-demo-box" id="powertour-demo-box-1"&gt;
+        &lt;p&gt;Demo box 1&lt;/p&gt;
+        &lt;span&gt;(hookTo)&lt;/span&gt;
+    &lt;/div&gt;    
+
+    &lt;div class="powertour-demo-box" id="powertour-demo-box-2"&gt;
+        &lt;p&gt;Demo box 2&lt;/p&gt;
+        &lt;span&gt;(hookTo)&lt;/span&gt;
+    &lt;/div&gt; 
+     
+    &lt;div class="powertour-demo-box" id="powertour-demo-box-3"&gt;
+        &lt;p&gt;Demo box 3&lt;/p&gt;
+        &lt;span&gt;(hookTo)&lt;/span&gt;
+    &lt;/div&gt; 
+    
+    &lt;!-- steps(content) --&gt; 
+    
+    &lt;div class="single-step" id="step-id-1"&gt;
+        &lt;h3&gt;Step one&lt;/h3&gt;
+        &lt;p&gt;This is the first step. It should be located below (inc offsetY ) the 'demo box 1' example blocks.&lt;/p&gt;
+        &lt;br/&gt;
+        &lt;input type="text" class="input-field" placeholder="Enter something here" id="step-validation-input-1"/&gt;
+        &lt;br/&gt;
+        &lt;br/&gt;
+        &lt;a href="#" data-powertour-action="next"&gt;Next step...&lt;/a&gt;
+    &lt;/div&gt;
+    
+    &lt;div class="single-step" id="step-id-2"&gt;
+        &lt;h3&gt;Step two&lt;/h3&gt;
+        &lt;p&gt;This is the second step and should be located next to (left side) 'demo box 2' example blocks. This step highlights the step and hookTo element.&lt;/p&gt;
+        &lt;br/&gt;
+        &lt;input type="text" class="input-field" placeholder="Enter something here" id="step-validation-input-2"/&gt;
+        &lt;br/&gt;
+        &lt;br/&gt;
+        &lt;a href="#" data-powertour-action="prev"&gt;Prev step&lt;/a&gt;
+        &lt;a href="#" data-powertour-action="next" style="float:right"&gt;Next step&lt;/a&gt;
+    &lt;/div&gt;
+    
+    &lt;div class="single-step" id="step-id-3"&gt;
+        &lt;h3&gt;Step three&lt;/h3&gt;
+        &lt;p&gt;This is the third and last step and should be located above and over the 'demo box 3' example blocks with the use of the 'offsetY' and 'offsetX' options.&lt;/p&gt;
+        &lt;br/&gt;
+        &lt;input type="text" class="input-field" placeholder="Enter something here" id="step-validation-input-3"/&gt;
+        &lt;br/&gt;
+        &lt;br/&gt;
+        &lt;a href="#" data-powertour-action="prev"&gt;Prev step...&lt;/a&gt;
+        &lt;a href="#" data-powertour-action="stop" style="float:right"&gt;End tour&lt;/a&gt;
+    &lt;/div&gt;
+
+&lt;/body&gt; 
+&lt;/html&gt;</pre> 
+ 
+    </div><!-- end #container --> 
+    
+    <!-- below this line are the steps -->
+    
+        <div class="single-step" id="step-id-1">
+            <h3>Step one</h3>
+            <p>This is the first step. It should be located below (inc offsetY ) the 'demo box 1' example blocks.</p>
+            <br/>
+            <input type="text" class="input-field" placeholder="Enter something here" id="step-validation-input-1"/>
+            <br/>
+            <br/>
+            <a href="#" data-powertour-action="next">Next step...</a>
+        </div>
+        
+        <div class="single-step" id="step-id-2">
+            <h3>Step two</h3>
+            <p>This is the second step and should be located next to (left side) 'demo box 2' example blocks. This step highlights the step and hookTo element.</p>
+            <br/>
+            <input type="text" class="input-field" placeholder="Enter something here" id="step-validation-input-2"/>
+            <br/>
+            <br/>
+            <a href="#" data-powertour-action="prev">Prev step</a>
+            <a href="#" data-powertour-action="next" style="float:right">Next step</a>
+        </div>
+        
+        <div class="single-step" id="step-id-3">
+            <h3>Step three</h3>
+            <p>This is the third and last step and should be located above and over the 'demo box 3' example blocks with the use of the 'offsetY' and 'offsetX' options.</p>
+            <p>
+            <br/>
+            <input type="text" class="input-field" placeholder="Enter something here" id="step-validation-input-3"/>
+            <br/>
+            <br/>
+            <a href="#" data-powertour-action="prev">Prev step...</a>
+            <a href="#" data-powertour-action="stop" style="float:right">End tour</a>
+        </div> 
+                              
+</body>
+</html>

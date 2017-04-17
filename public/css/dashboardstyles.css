@@ -1,0 +1,209 @@
+
+
+ .course-card{
+      
+    background-color: rgba(74,79,210,1);
+    margin-left: 50px;
+    /* float: left; */
+    /* width: 300px; */
+  height: 330px;
+    padding: 10px; 
+
+    margin-top: 10px;
+     border-radius: 20px;
+    border-radius:5px;
+         
+}
+.card-text{
+    font-size:16px !important;
+}
+.card-title{
+    font-size:18px;
+    margin:0;
+}
+
+.course-card img{
+    margin-top: 10px;
+    height: 50%;
+    width: 100%;
+}
+
+.course-anchor{
+    color: white;
+}
+
+.course-anchor:hover{
+    color: white;
+}
+
+.pagination{
+    visibility: hidden;
+}
+.content{
+    height: 90%;
+}
+.myIcons{
+    float: left;
+    margin-right: 15px;
+}
+.footer{
+        position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+
+.modal-title{
+    text-align: center;
+}
+  .main-panel>.classroom-content{
+    padding: 15px 10px !important;
+  }
+.empty-class{
+    text-align: center;
+}
+.dashboard-content>h3{
+   text-align: center;
+  }
+
+.day{
+    float: right;
+    text-transform: none;
+}
+
+.class-activity-box{
+    width: 85%;
+    margin: auto;
+}
+.activity-panel {
+    max-height: 100%;
+}
+#collapsingList>ul>li>a {
+    margin-left: 30px;
+}
+#collapsingList>ul>li>a>p {
+    font-size:11px;
+}
+#collapsingList>ul>li>a>.myIcons {
+    height:30px;
+}
+.title {
+        float: left;
+    margin-top: 21px;
+    margin-left: 220px;
+}
+#classroom-code-modal>.modal-dialog>.modal-content {
+    text-align: center;
+}
+    #share-btn,#invite-btn {
+    position: relative;
+        clear: both;
+        color: #00aeef;
+    background: white;
+    border: 2px solid #00aeef;
+    border-radius: 30px;
+}
+    #invite-btn {
+    float: left;
+}
+    .code-modal-footer,.code-modal-header{
+    border: none;
+}
+    .logo-holder {
+    clear: both;
+        text-align: center;
+        
+}
+    #classroom-code-modal{
+        margin-top: 100px;
+        
+    }
+    .code-body{
+        padding: 0 15px !important;
+    }
+   
+    #share-btn:hover,#invite-btn:hover,#share-btn:focus,#invite-btn:focus{
+        background: #00aeef;
+    color: white;
+        }
+        .title {
+        float: left;
+    margin-top: 21px;
+    margin-left: 15px;
+}
+.title.visible-sm, .title.visible-xs {
+       text-align: center;
+}
+.invitemembers {
+    padding-top: 10px !important;
+    padding-bottom: 10px !important;
+    background-color: white ;
+}
+.invitemembers>h4 {
+    margin: 0 !important;
+    text-align: center;
+}
+
+#add-members {
+    border: none;
+    background: transparent;
+
+    
+}
+
+#add-members>i {
+    font-size: 24px;
+    color: black;
+    
+}
+.card
+{
+    background: #444BD6;
+    background: -moz-linear-gradient(top, #444BD6 0%, rgba(83, 60, 225, 0.7) 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #444BD6), color-stop(100%, rgba(83, 60, 225, 0.7)));
+    background: -webkit-linear-gradient(top, #444BD6 0%, rgba(83, 60, 225, 0.7) 100%);
+    background: -o-linear-gradient(top, #444BD6 0%, rgba(83, 60, 225, 0.7) 100%);
+    background: -ms-linear-gradient(top, #444BD6 0%, rgba(83, 60, 225, 0.7) 100%);
+    background: linear-gradient(to bottom, #444BD6 0%, rgba(83, 60, 225, 0.7) 100%);
+        /* height: 220px; */
+    /* max-height: 300px; */
+    min-height: 250px;
+
+}
+.card-title{
+    text-align: center;
+    margin-top: 10px;
+    color: white;
+}
+.settings-url {
+   position: absolute !important;
+   top: 12px;
+   right: 25px;
+}
+
+.delete-icon {
+    background-image: url(/Images/delete-white.png);
+    height: 21px;
+    width: 16px;
+}
+.delete-icon:hover {
+    background-image: url(/Images/delete-red.png);
+    height: 22px;
+    width: 14px;
+}
+
+.format-img {
+    height: 64px;
+    width: 64px;
+}
+
+.card-body {
+    
+text-align: center;
+    color: white;
+}
+
+.btn-download {
+    border:1px solid white !important;
+    color: white !important;
+}

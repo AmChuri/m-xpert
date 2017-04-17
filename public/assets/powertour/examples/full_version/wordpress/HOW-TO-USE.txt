@@ -1,0 +1,1 @@
+Upload the zip into the themes folder. (unzip it if you are going to do this manually)
