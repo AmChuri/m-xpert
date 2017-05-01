@@ -219,7 +219,7 @@
 	</div>
 </div>
 
-	<a href="compair.html" class="btn btn-large pull-right">Compair Product</a>
+{{-- 	<a href="compair.html" class="btn btn-large pull-right">Compair Product</a>
 	<div class="pagination">
 			<ul>
 			<li><a href="#">&lsaquo;</a></li>
@@ -230,7 +230,7 @@
 			<li><a href="#">...</a></li>
 			<li><a href="#">&rsaquo;</a></li>
 			</ul>
-			</div>
+			</div> --}}
 			<br class="clr"/>
 </div>
 </div>
