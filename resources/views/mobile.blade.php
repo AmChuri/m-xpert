@@ -30,6 +30,8 @@
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/themes/images/ico/apple-touch-icon-72-precomposed.png">
     <link rel="apple-touch-icon-precomposed" href="/themes/images/ico/apple-touch-icon-57-precomposed.png">
 	<style type="text/css" id="enject"></style>
+	  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-3-typeahead/4.0.1/bootstrap3-typeahead.min.js"></script> 
   </head>
 <body>
 <div id="header">
@@ -49,49 +51,41 @@
 	<span class="icon-bar"></span>
 </a>
   <div class="navbar-inner">
-    <a class="brand" href="index.html"><img src="/themes/images/logo.png" alt="Bootsshop"/></a>
-		<form class="form-inline navbar-search" method="post" action="products.html" >
-		<input id="srchFld" class="srchTxt" type="text" />
-		  <select class="srchTxt">
-			<option>All</option>
-			<option>CLOTHES </option>
-			<option>FOOD AND BEVERAGES </option>
-			<option>HEALTH & BEAUTY </option>
-			<option>SPORTS & LEISURE </option>
-			<option>BOOKS & ENTERTAINMENTS </option>
-		</select> 
-		  <button type="submit" id="submitButton" class="btn btn-primary">Go</button>
+    <a class="brand" href="/"><img src="/themes/images/logo.png" alt="Bootsshop"/></a>
+        <form class="form-inline navbar-search" method="get" action="/search">
+        <input id="srchFld" name="search" class="typeahead srchTxt" type="text" />
+        
+          <button type="submit" id="submitButton" class="btn btn-primary">Go</button>
     </form>
+    <script type="text/javascript">
+    var path = "{{ route('autocomplete') }}";
+    $('input.typeahead').typeahead({
+        source:  function (query, process) {
+        return $.get(path, { query: query }, function (data) {
+                return process(data);
+
+            });
+        }
+    });
+</script>
     <ul id="topMenu" class="nav pull-right">
-	 <li class=""><a href="special_offer.html">Specials Offer</a></li>
-	 <li class=""><a href="normal.html">Delivery</a></li>
 	 <li class=""><a href="contact.html">Contact</a></li>
-	 <li class="">
-	 <a href="#login" role="button" data-toggle="modal" style="padding-right:0"><span class="btn btn-large btn-success">Login</span></a>
-	<div id="login" class="modal hide fade in" tabindex="-1" role="dialog" aria-labelledby="login" aria-hidden="false" >
-		  <div class="modal-header">
-			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-			<h3>Login Block</h3>
-		  </div>
-		  <div class="modal-body">
-			<form class="form-horizontal loginFrm">
-			  <div class="control-group">								
-				<input type="text" id="inputEmail" placeholder="Email">
-			  </div>
-			  <div class="control-group">
-				<input type="password" id="inputPassword" placeholder="Password">
-			  </div>
-			  <div class="control-group">
-				<label class="checkbox">
-				<input type="checkbox"> Remember me
-				</label>
-			  </div>
-			</form>		
-			<button type="submit" class="btn btn-success">Sign in</button>
-			<button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
-		  </div>
-	</div>
+	        @if (Auth::guest())
+     <li> <a href="/register" role="button" data-toggle="modal" style="padding-right:0"><span class="btn btn-large btn-success">Sign Up</span></a></li>
+     <li class="">
+     <a href="/login" role="button" data-toggle="modal" style="padding-right:0"><span class="btn btn-large btn-success">Login</span></a>
 	</li>
+	@else
+	<li> <a role="button" data-toggle="modal" style="padding-right:0" href="{{ route('logout') }}"
+                                            onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                           <span class="btn btn-large btn-success"> Logout</span>
+                                        </a>
+
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                            {{ csrf_field() }}
+                                        </form> </li>
+                                        @endif
     </ul>
   </div>
 </div>
@@ -107,12 +101,12 @@
 	   <ul id="sideManu" class="nav nav-tabs nav-stacked">
             <li class="subMenu open"><a> Mobiles</a>
                 <ul>
-                <li><a class="active" href="products.html"><i class="icon-chevron-right"></i>Motorola </a></li>
-            <li><a class="active" href="products.html"><i class="icon-chevron-right"></i>Google </a></li>
-            <li><a class="active" href="products.html"><i class="icon-chevron-right"></i>Lenovo </a></li>
-            <li><a class="active" href="products.html"><i class="icon-chevron-right"></i>Song </a></li>
-            <li><a class="active" href="products.html"><i class="icon-chevron-right"></i>OnePlus </a></li>
-            <li><a class="active" href="products.html"><i class="icon-chevron-right"></i>Micromax </a></li>
+                <li><a class="active" href="/product/mobiles/s/motorola"><i class="icon-chevron-right"></i>Motorola </a></li>
+            <li><a class="active" href="/product/mobiles/s/google"><i class="icon-chevron-right"></i>Google </a></li>
+            <li><a class="active" href="/product/mobiles/s/lenovo"><i class="icon-chevron-right"></i>Lenovo </a></li>
+            <li><a class="active" href="/product/mobiles/s/sony"><i class="icon-chevron-right"></i>Sony </a></li>
+            <li><a class="active" href="/product/mobiles/s/oneplus"><i class="icon-chevron-right"></i>OnePlus </a></li>
+            <li><a class="active" href="/product/mobiles/s/micromax"><i class="icon-chevron-right"></i>Micromax </a></li>
             
 
                 </ul>
@@ -133,7 +127,7 @@
 <!-- Sidebar end=============================================== -->
 	<div class="span9">
     <ul class="breadcrumb">
-		<li><a href="index.html">Home</a> <span class="divider">/</span></li>
+		<li><a href="/">Home</a> <span class="divider">/</span></li>
 		<li class="active">Mobiles</li>
     </ul>
 	<h3> Mobiles <small class="pull-right"> {{count($data)}} products are available </small></h3>	
@@ -276,11 +270,11 @@
 				<a href="#"><img width="60" height="60" src="/themes/images/youtube.png" title="youtube" alt="youtube"/></a>
 			 </div> 
 		 </div>
-		<p class="pull-right">&copy; Bootshop</p>
+		<p class="pull-right">&copy; m-xpert</p>
 	</div><!-- Container End -->
 	</div>
 <!-- Placed at the end of the document so the pages load faster ============================================= -->
-	<script src="/themes/js/jquery.js" type="text/javascript"></script>
+	{{-- <script src="/themes/js/jquery.js" type="text/javascript"></script> --}}
 	<script src="/themes/js/bootstrap.min.js" type="text/javascript"></script>
 	<script src="/themes/js/google-code-prettify/prettify.js"></script>
 	

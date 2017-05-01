@@ -77,7 +77,7 @@
                           <label>Feature Phone</label>
                           <select  name="data[feature]" type="" class="form-control" placeholder="Sub category" required>
                           <option></option>
-                          <option value="YESS">Yes</option>
+                          <option value="YES">Yes</option>
                           <option value="NO">No</option></select></div>
                         <button type="submit">Submit</button>
                         </form>

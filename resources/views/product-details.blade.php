@@ -16,13 +16,14 @@
 	<script src="themes/js/less.js" type="text/javascript"></script> -->
 	
 <!-- Bootstrap style --> 
+   <link href="/css/demo.css" rel="stylesheet" />
     <link id="callCss" rel="stylesheet" href="/themes/bootshop/bootstrap.min.css" media="screen"/>
     <link href="/themes/css/base.css" rel="stylesheet" media="screen"/>
 <!-- Bootstrap style responsive -->	
 	<link href="/themes/css/bootstrap-responsive.min.css" rel="stylesheet"/>
 	<link href="/themes/css/font-awesome.css" rel="stylesheet" type="text/css">
 <!-- Google-code-prettify -->	
-	<link href="/themes/js/google-code-prettify/prettify.css" rel="stylesheet"/>
+	{{-- <link href="/themes/js/google-code-prettify/prettify.css" rel="stylesheet"/> --}}
 <!-- fav and touch icons -->
     <link rel="shortcut icon" href="/themes/images/ico/favicon.ico">
     <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/themes/images/ico/apple-touch-icon-144-precomposed.png">
@@ -30,12 +31,15 @@
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/themes/images/ico/apple-touch-icon-72-precomposed.png">
     <link rel="apple-touch-icon-precomposed" href="/themes/images/ico/apple-touch-icon-57-precomposed.png">
 	<style type="text/css" id="enject"></style>
+	  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-3-typeahead/4.0.1/bootstrap3-typeahead.min.js"></script>  
   </head>
 <body>
 <div id="header">
 <div class="container">
 <div id="welcomeLine" class="row">
-	<div class="span6">Welcome!<strong> User</strong></div>
+	@if (Auth::guest())<div class="span6">Welcome!<strong> User</strong></div>
+	@else<div class="span6">Welcome!<strong> {{ Auth::user()->name }}</strong></div>@endif
 	<div class="span6">
 	<div class="pull-right">
 		
@@ -50,49 +54,42 @@
 	<span class="icon-bar"></span>
 </a>
   <div class="navbar-inner">
-    <a class="brand" href="index.html"><img src="/themes/images/logo.png" alt="Bootsshop"/></a>
-		<form class="form-inline navbar-search" method="post" action="products.html" >
-		<input id="srchFld" class="srchTxt" type="text" />
-		  <select class="srchTxt">
-			<option>All</option>
-			<option>CLOTHES </option>
-			<option>FOOD AND BEVERAGES </option>
-			<option>HEALTH & BEAUTY </option>
-			<option>SPORTS & LEISURE </option>
-			<option>BOOKS & ENTERTAINMENTS </option>
-		</select> 
-		  <button type="submit" id="submitButton" class="btn btn-primary">Go</button>
+    <a class="brand" href="/"><img src="/themes/images/logo.png" alt="Bootsshop"/></a>
+        <form class="form-inline navbar-search" method="get" action="/search">
+        <input id="srchFld" name="search" class="typeahead srchTxt" type="text" />
+        
+          <button type="submit" id="submitButton" class="btn btn-primary">Go</button>
     </form>
+    <script type="text/javascript">
+    var path = "{{ route('autocomplete') }}";
+    $('input.typeahead').typeahead({
+        source:  function (query, process) {
+        return $.get(path, { query: query }, function (data) {
+                return process(data);
+
+            });
+        }
+    });
+</script>
     <ul id="topMenu" class="nav pull-right">
-	 <li class=""><a href="special_offer.html">Specials Offer</a></li>
-	 <li class=""><a href="normal.html">Delivery</a></li>
+
 	 <li class=""><a href="contact.html">Contact</a></li>
-	 <li class="">
-	 <a href="#login" role="button" data-toggle="modal" style="padding-right:0"><span class="btn btn-large btn-success">Login</span></a>
-	<div id="login" class="modal hide fade in" tabindex="-1" role="dialog" aria-labelledby="login" aria-hidden="false" >
-		  <div class="modal-header">
-			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-			<h3>Login Block</h3>
-		  </div>
-		  <div class="modal-body">
-			<form class="form-horizontal loginFrm">
-			  <div class="control-group">								
-				<input type="text" id="inputEmail" placeholder="Email">
-			  </div>
-			  <div class="control-group">
-				<input type="password" id="inputPassword" placeholder="Password">
-			  </div>
-			  <div class="control-group">
-				<label class="checkbox">
-				<input type="checkbox"> Remember me
-				</label>
-			  </div>
-			</form>		
-			<button type="submit" class="btn btn-success">Sign in</button>
-			<button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
-		  </div>
-	</div>
+	        @if (Auth::guest())
+     <li> <a href="/register" role="button" data-toggle="modal" style="padding-right:0"><span class="btn btn-large btn-success">Sign Up</span></a></li>
+     <li class="">
+     <a href="/login" role="button" data-toggle="modal" style="padding-right:0"><span class="btn btn-large btn-success">Login</span></a>
 	</li>
+	@else
+	<li> <a role="button" data-toggle="modal" style="padding-right:0" href="{{ route('logout') }}"
+                                            onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                           <span class="btn btn-large btn-success"> Logout</span>
+                                        </a>
+
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                            {{ csrf_field() }}
+                                        </form> </li>
+                                        @endif
     </ul>
   </div>
 </div>
@@ -104,16 +101,16 @@
 	<div class="row">
 <!-- Sidebar ================================================== -->
 	<div id="sidebar" class="span3">
-		<div class="well well-small"><a id="myCart" href="product_summary.html"><img src="/themes/images/ico-cart.png" alt="cart">3 Items in your cart  <span class="badge badge-warning pull-right">$155.00</span></a></div>
+		<div class="well well-small"><a id="myCart" href="/product/checkout"><img src="/themes/images/ico-cart.png" alt="cart">{{count($cart)}} Items in your cart  <span class="badge badge-warning pull-right">₹ {{array_sum($amount)}}</span></a></div>
 	   <ul id="sideManu" class="nav nav-tabs nav-stacked">
-            <li class="subMenu open"><a> Mobiles</a>
+         <li class="subMenu open"><a> Mobiles</a>
                 <ul>
-                <li><a class="active" href="products.html"><i class="icon-chevron-right"></i>Motorola </a></li>
-            <li><a class="active" href="products.html"><i class="icon-chevron-right"></i>Google </a></li>
-            <li><a class="active" href="products.html"><i class="icon-chevron-right"></i>Lenovo </a></li>
-            <li><a class="active" href="products.html"><i class="icon-chevron-right"></i>Song </a></li>
-            <li><a class="active" href="products.html"><i class="icon-chevron-right"></i>OnePlus </a></li>
-            <li><a class="active" href="products.html"><i class="icon-chevron-right"></i>Micromax </a></li>
+                <li><a class="active" href="/product/mobiles/s/motorola"><i class="icon-chevron-right"></i>Motorola </a></li>
+            <li><a class="active" href="/product/mobiles/s/google"><i class="icon-chevron-right"></i>Google </a></li>
+            <li><a class="active" href="/product/mobiles/s/lenovo"><i class="icon-chevron-right"></i>Lenovo </a></li>
+            <li><a class="active" href="/product/mobiles/s/sony"><i class="icon-chevron-right"></i>Sony </a></li>
+            <li><a class="active" href="/product/mobiles/s/oneplus"><i class="icon-chevron-right"></i>OnePlus </a></li>
+            <li><a class="active" href="/product/mobiles/s/micromax"><i class="icon-chevron-right"></i>Micromax </a></li>
             
 
                 </ul>
@@ -134,8 +131,8 @@
 <!-- Sidebar end=============================================== -->
 	<div class="span9">
     <ul class="breadcrumb">
-    <li><a href="index.html">Home</a> <span class="divider">/</span></li>
-    <li><a href="products.html">Mobiles</a> <span class="divider">/</span></li>
+    <li><a href="/">Home</a> <span class="divider">/</span></li>
+    <li><a href="/product/mobiles">Mobiles</a> <span class="divider">/</span></li>
     <li class="active">{{$data['name']}}</li>
     </ul>	
 	<div class="row">	  
@@ -151,12 +148,13 @@
 				<h3>{{$data['name']}} </h3>
 				<small>-{{$data['subdescription']}}</small>
 				<hr class="soft"/>
+				<h5><a href="/product/mobiles/v/{{$data['id']}}/graph" class="btn">Check Price Graph</a></h5>
 				<form class="form-horizontal qtyFrm">
 				  <div class="control-group">
 					<label class="control-label"><span>₹ {{$data['price']}}</span></label>
 					<div class="controls">
-					<input type="number" class="span1" placeholder="Qty."/>
-					  <button type="submit" class="btn btn-large btn-primary pull-right"> Add to cart <i class=" icon-shopping-cart"></i></button>
+					{{-- <input type="number" class="span1" placeholder="Qty."/> --}}
+					  <button type="submit" class="btn btn-large btn-primary pull-right"><a href="/product/add/{{$data['id']}}"> Add to cart <i class=" icon-shopping-cart"></i></a></button>
 					</div>
 				  </div>
 				</form>
@@ -200,25 +198,6 @@
 				OND363338
 				</p>
 
-				<h4>Editorial Reviews</h4>
-				<h5>Manufacturer's Description </h5>
-				<p>
-				With a generous 18x Fujinon optical zoom lens, the S2950 really packs a punch, especially when matched with its 14 megapixel sensor, large 3.0" LCD screen and 720p HD (30fps) movie capture.
-				</p>
-
-				<h5>Electric powered Fujinon 18x zoom lens</h5>
-				<p>
-				The S2950 sports an impressive 28mm – 504mm* high precision Fujinon optical zoom lens. Simple to operate with an electric powered zoom lever, the huge zoom range means that you can capture all the detail, even when you're at a considerable distance away. You can even operate the zoom during video shooting. Unlike a bulky D-SLR, bridge cameras allow you great versatility of zoom, without the hassle of carrying a bag of lenses.
-				</p>
-				<h5>Impressive panoramas</h5>
-				<p>
-				With its easy to use Panoramic shooting mode you can get creative on the S2950, however basic your skills, and rest assured that you will not risk shooting uneven landscapes or shaky horizons. The camera enables you to take three successive shots with a helpful tool which automatically releases the shutter once the images are fully aligned to seamlessly stitch the shots together in-camera. It's so easy and the results are impressive.
-				</p>
-
-				<h5>Sharp, clear shots</h5>
-				<p>
-				Even at the longest zoom settings or in the most challenging of lighting conditions, the S2950 is able to produce crisp, clean results. With its mechanically stabilised 1/2 3", 14 megapixel CCD sensor, and high ISO sensitivity settings, Fujifilm's Dual Image Stabilisation technology combines to reduce the blurring effects of both hand-shake and subject movement to provide superb pictures.
-				</p>
               </div>
 		<div class="tab-pane fade" id="profile">
 		<div id="myTab" class="pull-right">
@@ -528,18 +507,90 @@
 				<a href="#"><img width="60" height="60" src="/themes/images/youtube.png" title="youtube" alt="youtube"/></a>
 			 </div> 
 		 </div>
-		<p class="pull-right">&copy; Bootshop</p>
+		<p class="pull-right">&copy; m-xpert</p>
 	</div><!-- Container End -->
-	</div>
+	</div></body>
+	  <script src="/js/jquery.min.js" type="text/javascript"></script>
+    <script src="/js/jquery-ui.min.js" type="text/javascript"></script>
+	<script src="/js/bootstrap.min.js" type="text/javascript"></script>
 <!-- Placed at the end of the document so the pages load faster ============================================= -->
-	<script src="/themes/js/jquery.js" type="text/javascript"></script>
+	{{-- <script src="/themes/js/jquery.js" type="text/javascript"></script> --}}
 	<script src="/themes/js/bootstrap.min.js" type="text/javascript"></script>
-	<script src="/themes/js/google-code-prettify/prettify.js"></script>
+	{{-- <script src="/themes/js/google-code-prettify/prettify.js"></script> --}}
 	
 	<script src="/themes/js/bootshop.js"></script>
     <script src="/themes/js/jquery.lightbox-0.5.js"></script>
 	
 	<!-- Themes switcher section ============================================================================================= -->
 
-</body>
+
+
+	<!--  Forms Validations Plugin -->
+	<script src="/js/jquery.validate.min.js"></script>
+
+	<!--  Plugin for Date Time Picker and Full Calendar Plugin-->
+	<script src="/js/moment.min.js"></script>
+
+    <!--  Date Time Picker Plugin is included in this js file -->
+    <script src="/js/bootstrap-datetimepicker.js"></script>
+
+    <!--  Select Picker Plugin -->
+    <script src="/js/bootstrap-selectpicker.js"></script>
+
+	<!--  Checkbox, Radio, Switch and Tags Input Plugins -->
+	<script src="/js/bootstrap-checkbox-radio-switch-tags.js"></script>
+
+	<!--  Charts Plugin -->
+	<script src="/js/chartist.min.js"></script>
+
+    <!--  Notifications Plugin    -->
+    <script src="/js/bootstrap-notify.js"></script>
+
+    <!-- Sweet Alert 2 plugin -->
+	<script src="/js/sweetalert2.js"></script>
+
+ 
+	<!-- Wizard Plugin    -->
+    <script src="/js/jquery.bootstrap.wizard.min.js"></script>
+
+    <!--  Bootstrap Table Plugin    -->
+    <script src="/js/bootstrap-table.js"></script>
+
+	<!--  Plugin for DataTables.net  -->
+    <script src="/js/jquery.datatables.js"></script>
+
+
+	<!-- Light Bootstrap Dashboard DEMO methods, don't include it in your project! -->
+	{{-- <script src="/js/demo.js"></script> --}}
+	<script type="text/javascript">
+		        var dataStock = {
+          labels: ['\'07','\'08','\'09', '\'10', '\'11', '\'12', '\'13', '\'14', '\'15'],
+          series: [
+            [0, 34.90, 42.28, 51.93, 62.21, 80.23, 62.21, 82.12, 102.50, 107.23]
+          ]
+        };
+
+        var optionsStock = {
+          lineSmooth: false,
+          height: "260px",
+          axisY: {
+            offset: 40,
+            labelInterpolationFnc: function(value) {
+                return '$' + value;
+              }
+
+          },
+          low: 10,
+          high: 110,
+            classNames: {
+              point: 'ct-point ct-green',
+              line: 'ct-line ct-green'
+          }
+        };
+
+        Chartist.Line('#chartStock', dataStock, optionsStock);
+
+
+	</script>
+
 </html>

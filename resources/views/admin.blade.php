@@ -59,6 +59,7 @@
         <th style="width: 300px">Description</th>
         <th>Feature</th>
         <th>Action</th>
+        <th>Graph Price</th>
       </tr>
     </thead>
     <tbody>
@@ -79,6 +80,7 @@
            <td>".substr($getdata['description'],0,150)."...</td>
            <td>".$getdata['feature']."</td>
              <td><a class=\"btn btn-primary\" href=\"/admin/editproduct/".$getdata['id']."\" >Edit</a><button class=\"settings-url btn btn-primary\" data-toggle=\"modal\" data-target=\"#confirm-modal\" >DELETE</button><input type =\"hidden\" class=\"profile\"  value=".$getdata['id']."></td>
+             <td><a href=\"/admin/graph/".$getdata['id']."/view\" class=\"btn btn-primary\"> Add Graph </a></td>
       </tr>";}
       @endphp   </tbody>
   </table>
