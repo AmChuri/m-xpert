@@ -75,8 +75,15 @@
                           <label>Sub Description </label>
                           <input  name="data[subdescription]" value="{{$data['subdescription']}}" type="" class="form-control" placeholder="Sub Description" required>
                         </div> 
+                         <div class="form-group">
+                          <label>Feature Phone</label>
+                          <select  name="data[feature]" type="" class="form-control" placeholder="Sub category" required>
+                          <option></option>
+                          <option value="YES">Yes</option>
+                          <option value="NO">No</option></select></div>
                         <button type="submit">Upldate</button>
                         </form>
+                        <button><a href="/admin/home">Go Back</a></button>
  </body>
  @if(Session::has('message')) 
     <script>

@@ -84,6 +84,7 @@
                           <option value="NO">No</option></select></div>
                         <button type="submit">Submit</button>
                         </form>
+                        <button><a href="/admin/home">Go Back</a></button>
  </body>
  @if(Session::has('message')) 
     <script>
