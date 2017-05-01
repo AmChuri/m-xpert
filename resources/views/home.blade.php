@@ -206,7 +206,7 @@ echo"     <li class=\"span3\">
                     <a href=\"/product/mobiles/v/".$getdata['id']."\"><img src=\"/image/".$getdata['imageid']."\" alt=\"\"/ style=\"height:100px;\"></a>
                     <div class=\"caption\">
                       <h5>".substr($getdata['name'],0,15)."</h5>
-                      <h4><a class=\"btn\" href=\"product_details.html\">VIEW</a> <span class=\"pull-right\">₹".$getdata['price']."</span></h4>
+                      <h4><a class=\"btn\" href=\"/product/mobiles/v/".$getdata['id']."\">VIEW</a> <span class=\"pull-right\">₹".$getdata['price']."</span></h4>
                     </div>
                   </div>
                 </li>";
@@ -218,126 +218,26 @@ echo"     <li class=\"span3\">
               </div>
                <div class="item">
               <ul class="thumbnails">
-                <li class="span3">
-                  <div class="thumbnail">
-                  <i class="tag"></i>
-                    <a href="product_details.html"><img src="/themes/images/products/5.jpg" alt=""></a>
-                    <div class="caption">
-                      <h5>Product name</h5>
-                      <h4><a class="btn" href="product_details.html">VIEW</a> <span class="pull-right">$222.00</span></h4>
+                    @php
+for($i=4;$i<8;$i++)
+              {
+                $getdata=$data[$i];
+                $getdata=$getdata['attributes'];
+echo"     <li class=\"span3\">
+                  <div class=\"thumbnail\">
+                  <i class=\"tag\"></i>
+                    <a href=\"/product/mobiles/v/".$getdata['id']."\"><img src=\"/image/".$getdata['imageid']."\" alt=\"\"/ style=\"height:100px;\"></a>
+                    <div class=\"caption\">
+                      <h5>".substr($getdata['name'],0,15)."</h5>
+                      <h4><a class=\"btn\" href=\"/product/mobiles/v/".$getdata['id']."\">VIEW</a> <span class=\"pull-right\">₹".$getdata['price']."</span></h4>
                     </div>
                   </div>
-                </li>
-                <li class="span3">
-                  <div class="thumbnail">
-                  <i class="tag"></i>
-                    <a href="product_details.html"><img src="/themes/images/products/6.jpg" alt=""></a>
-                    <div class="caption">
-                      <h5>Product name</h5>
-                      <h4><a class="btn" href="product_details.html">VIEW</a> <span class="pull-right">$222.00</span></h4>
-                    </div>
-                  </div>
-                </li>
-                <li class="span3">
-                  <div class="thumbnail">
-                    <a href="product_details.html"><img src="/themes/images/products/7.jpg" alt=""></a>
-                    <div class="caption">
-                      <h5>Product name</h5>
-                       <h4><a class="btn" href="product_details.html">VIEW</a> <span class="pull-right">$222.00</span></h4>
-                    </div>
-                  </div>
-                </li>
-                <li class="span3">
-                  <div class="thumbnail">
-                    <a href="product_details.html"><img src="/themes/images/products/8.jpg" alt=""></a>
-                    <div class="caption">
-                      <h5>Product name</h5>
-                       <h4><a class="btn" href="product_details.html">VIEW</a> <span class="pull-right">$222.00</span></h4>
-                    </div>
-                  </div>
-                </li>
+                </li>";
+              }
+              @endphp
               </ul>
               </div>
-               <div class="item">
-              <ul class="thumbnails">
-                <li class="span3">
-                  <div class="thumbnail">
-                    <a href="product_details.html"><img src="/themes/images/products/9.jpg" alt=""></a>
-                    <div class="caption">
-                      <h5>Product name</h5>
-                      <h4><a class="btn" href="product_details.html">VIEW</a> <span class="pull-right">$222.00</span></h4>
-                    </div>
-                  </div>
-                </li>
-                <li class="span3">
-                  <div class="thumbnail">
-                    <a href="product_details.html"><img src="/themes/images/products/10.jpg" alt=""></a>
-                    <div class="caption">
-                      <h5>Product name</h5>
-                      <h4><a class="btn" href="product_details.html">VIEW</a> <span class="pull-right">$222.00</span></h4>
-                    </div>
-                  </div>
-                </li>
-                <li class="span3">
-                  <div class="thumbnail">
-                    <a href="product_details.html"><img src="/themes/images/products/11.jpg" alt=""></a>
-                    <div class="caption">
-                      <h5>Product name</h5>
-                       <h4><a class="btn" href="product_details.html">VIEW</a> <span class="pull-right">$222.00</span></h4>
-                    </div>
-                  </div>
-                </li>
-                <li class="span3">
-                  <div class="thumbnail">
-                    <a href="product_details.html"><img src="/themes/images/products/1.jpg" alt=""></a>
-                    <div class="caption">
-                      <h5>Product name</h5>
-                       <h4><a class="btn" href="product_details.html">VIEW</a> <span class="pull-right">$222.00</span></h4>
-                    </div>
-                  </div>
-                </li>
-              </ul>
-              </div>
-               <div class="item">
-              <ul class="thumbnails">
-                <li class="span3">
-                  <div class="thumbnail">
-                    <a href="product_details.html"><img src="/themes/images/products/2.jpg" alt=""></a>
-                    <div class="caption">
-                      <h5>Product name</h5>
-                      <h4><a class="btn" href="product_details.html">VIEW</a> <span class="pull-right">$222.00</span></h4>
-                    </div>
-                  </div>
-                </li>
-                <li class="span3">
-                  <div class="thumbnail">
-                    <a href="product_details.html"><img src="/themes/images/products/3.jpg" alt=""></a>
-                    <div class="caption">
-                      <h5>Product name</h5>
-                      <h4><a class="btn" href="product_details.html">VIEW</a> <span class="pull-right">$222.00</span></h4>
-                    </div>
-                  </div>
-                </li>
-                <li class="span3">
-                  <div class="thumbnail">
-                    <a href="product_details.html"><img src="/themes/images/products/4.jpg" alt=""></a>
-                    <div class="caption">
-                      <h5>Product name</h5>
-                       <h4><a class="btn" href="product_details.html">VIEW</a> <span class="pull-right">$222.00</span></h4>
-                    </div>
-                  </div>
-                </li>
-                <li class="span3">
-                  <div class="thumbnail">
-                    <a href="product_details.html"><img src="/themes/images/products/5.jpg" alt=""></a>
-                    <div class="caption">
-                      <h5>Product name</h5>
-                       <h4><a class="btn" href="product_details.html">VIEW</a> <span class="pull-right">$222.00</span></h4>
-                    </div>
-                  </div>
-                </li>
-              </ul>
-              </div>
+             
               </div>
               <a class="left carousel-control" href="#featured" data-slide="prev">‹</a>
               <a class="right carousel-control" href="#featured" data-slide="next">›</a>
@@ -360,7 +260,7 @@ echo"     <li class=\"span3\">
                         ".substr($getdata['subdescription'], 0,10)." 
                       </p>
                      
-                      <h4 style=\"text-align:center\"><a class=\"btn\" href=\"product_details.html\"> <i class=\"icon-zoom-in\"></i></a> <a class=\"btn\" href=\"#\">Add to <i class=\"icon-shopping-cart\"></i></a> <a class=\"btn btn-primary\" href=\"#\">₹".$getdata['price']."</a></h4>
+                      <h4 style=\"text-align:center\"><a class=\"btn\" href=\"product_details.html\"> <i class=\"icon-zoom-in\"></i></a> <a class=\"btn\" href=\"/product/add/".$getdata['id']."\">Add to <i class=\"icon-shopping-cart\"></i></a> <a class=\"btn btn-primary\" href=\"#\">₹".$getdata['price']."</a></h4>
                     </div>
                   </div>
                 </li>";

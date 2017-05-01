@@ -189,7 +189,7 @@ echo"     <li class=\"span3\">
                     <a href=\"/product/mobiles/v/".$getdata['id']."\"><img src=\"/image/".$getdata['imageid']."\" alt=\"\"/ style=\"height:100px;\"></a>
                     <div class=\"caption\">
                       <h5>".substr($getdata['name'],0,15)."</h5>
-                      <h4><a class=\"btn\" href=\"product_details.html\">VIEW</a> <span class=\"pull-right\">₹".$getdata['price']."</span></h4>
+                      <h4><a class=\"btn\" href=\"/product/mobiles/v/".$getdata['id']."\">VIEW</a> <span class=\"pull-right\">₹".$getdata['price']."</span></h4>
                     </div>
                   </div>
                 </li>";
@@ -202,7 +202,7 @@ echo"     <li class=\"span3\">
                <div class="item">
               <ul class="thumbnails">
                       @php
-for($i=4;$i<6;$i++)
+for($i=4;$i<8;$i++)
               {
                 $getdata=$data[$i];
                 $getdata=$getdata['attributes'];
@@ -212,7 +212,7 @@ echo"     <li class=\"span3\">
                     <a href=\"/product/mobiles/v/".$getdata['id']."\"><img src=\"/image/".$getdata['imageid']."\" alt=\"\"/ style=\"height:100px;\"></a>
                     <div class=\"caption\">
                       <h5>".substr($getdata['name'],0,15)."</h5>
-                      <h4><a class=\"btn\" href=\"product_details.html\">VIEW</a> <span class=\"pull-right\">₹".$getdata['price']."</span></h4>
+                      <h4><a class=\"btn\" href=\"/product/mobiles/v/".$getdata['id']."\">VIEW</a> <span class=\"pull-right\">₹".$getdata['price']."</span></h4>
                     </div>
                   </div>
                 </li>";

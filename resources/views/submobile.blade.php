@@ -181,7 +181,7 @@
 				<input type=\"checkbox\">  Adds product to compare
 			</label><br/>
 			
-			  <a href=\"product_details.html\" class=\"btn btn-large btn-primary\"> Add to <i class=\" icon-shopping-cart\"></i></a>
+			  <a href=\"/product/add/".$getdata['id']."\" class=\"btn btn-large btn-primary\"> Add to <i class=\" icon-shopping-cart\"></i></a>
 			  <a href=\"product_details.html\" class=\"btn btn-large\"><i class=\"icon-zoom-in\"></i></a>
 			
 				</form>
@@ -208,7 +208,7 @@
 				  <p> 
 					".$getdata['subdescription']."
 				  </p>
-				   <h4 style=\"text-align:center\"><a class=\"btn\" href=\"product_details.html\"> <i class=\"icon-zoom-in\"></i></a> <a class=\"btn\" href=\"#\">Add to <i class=\"icon-shopping-cart\"></i></a> <a class=\"btn btn-primary\" href=\"#\"> ₹ ".$getdata['price']."</a></h4>
+				   <h4 style=\"text-align:center\"><a class=\"btn\" href=\"product_details.html\"> <i class=\"icon-zoom-in\"></i></a> <a class=\"btn\" href=\"/product/add/".$getdata['id']."\">Add to <i class=\"icon-shopping-cart\"></i></a> <a class=\"btn btn-primary\" href=\"#\"> ₹ ".$getdata['price']."</a></h4>
 				</div>
 			  </div>
 			</li>";
