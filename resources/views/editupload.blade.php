@@ -67,6 +67,8 @@
                           <option value="lenovo">Lenovo</option>
                           <option value="song">Sony</option>
                           <option value="oneplus">OnePlus</option>
+                                <option value="samsung">Samsung</option>
+                          <option value="iphone">Iphone</option>
                           <option value="micromax">Micromax</option></select>
                         </div>
                         <div class="form-group">
