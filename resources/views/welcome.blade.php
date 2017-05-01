@@ -306,9 +306,9 @@ echo"     <li class=\"span3\">
     
     <!-- Themes switcher section ============================================================================================= -->
 <script type="text/javascript">
-  function init() {
 
-    if(isMobile()) {
+
+  if (screen.width < 768) {
       console.log('hello');
       var x = "User-agent header sent: " + navigator.userAgent;
 var i = x.lastIndexOf(";");
@@ -316,15 +316,10 @@ var j = x.indexOf("Build");
 var a = x.slice(i+1,j);
 alert(x);
     }
-}
 
 
-function isMobile() {
 
-    if(navigator.userAgent.match(/Android/i) || navigator.userAgent.match(/BlackBerry/i) || navigator.userAgent.match(/iPhone|iPad|iPod/i) || navigator.userAgent.match(/IEMobile/i))
-            return true;
-        return false;
-}
+
 </script>
 </body>
 </html>
