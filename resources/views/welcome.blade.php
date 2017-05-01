@@ -149,6 +149,8 @@
             <li><a class="active" href="/product/mobiles/s/lenovo"><i class="icon-chevron-right"></i>Lenovo </a></li>
             <li><a class="active" href="/product/mobiles/s/sony"><i class="icon-chevron-right"></i>Sony </a></li>
             <li><a class="active" href="/product/mobiles/s/oneplus"><i class="icon-chevron-right"></i>OnePlus </a></li>
+             <li><a class="active" href="/product/mobiles/s/iphone"><i class="icon-chevron-right"></i>IPhone </a></li>
+              <li><a class="active" href="/product/mobiles/s/samsung"><i class="icon-chevron-right"></i>Samsung </a></li>
             <li><a class="active" href="/product/mobiles/s/micromax"><i class="icon-chevron-right"></i>Micromax </a></li>
             
 
