@@ -314,7 +314,7 @@ echo"     <li class=\"span3\">
 var i = x.lastIndexOf(";");
 var j = x.indexOf("Build");
 var a = x.slice(i+1,j);
-alert("Your mobile Device is "a);
+alert("Your mobile Device is "+a);
     }
 
 
