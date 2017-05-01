@@ -50,7 +50,7 @@
                           <input  name="data[price]" value="{{$data['price']}}" type="" class="form-control" placeholder="price" required>
                         </div>
                          <div class="form-group">
-                          <label>Qunatity </label>
+                          <label>Quantity </label>
                           <input  name="data[quantity]" value="{{$data['quantity']}}" type="" class="form-control" placeholder="quantity" required>
                         </div>
                         <div class="form-group">

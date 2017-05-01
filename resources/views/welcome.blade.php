@@ -202,7 +202,7 @@ echo"     <li class=\"span3\">
                <div class="item">
               <ul class="thumbnails">
                       @php
-for($i=4;$i<8;$i++)
+for($i=4;$i<6;$i++)
               {
                 $getdata=$data[$i];
                 $getdata=$getdata['attributes'];
