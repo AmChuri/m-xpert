@@ -135,7 +135,7 @@
 		<li><a href="index.html">Home</a> <span class="divider">/</span></li>
 		<li class="active"> SHOPPING CART</li>
     </ul>
-	<h3>  SHOPPING CART [ <small>{{count($product)}} Item(s) </small>]<a href="products.html" class="btn btn-large pull-right"><i class="icon-arrow-left"></i> Continue Shopping </a></h3>	
+	<h3>  SHOPPING CART [ <small>{{count($product)}} Item(s) </small>]<a href="/home" class="btn btn-large pull-right"><i class="icon-arrow-left"></i> Continue Shopping </a></h3>	
 	<hr class="soft"/>
 	<h4>Save for later</h4>
 		<table class="table table-bordered">
@@ -235,7 +235,7 @@
 		
 			
 		
-	<a href="products.html" class="btn btn-large"><i class="icon-arrow-left"></i> Continue Shopping </a>
+	<a href="/home" class="btn btn-large"><i class="icon-arrow-left"></i> Continue Shopping </a>
 	<!-- <a href="login.html" class="btn btn-large pull-right">Next <i class="icon-arrow-right"></i></a> -->
 	
 </div>
