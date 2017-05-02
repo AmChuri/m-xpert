@@ -71,7 +71,6 @@
 </script>
     <ul id="topMenu" class="nav pull-right">
 
-     <li class=""><a href="contact.html">Contact</a></li>
      <li> <a role="button" data-toggle="modal" style="padding-right:0" href="{{ route('logout') }}"
                                             onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">

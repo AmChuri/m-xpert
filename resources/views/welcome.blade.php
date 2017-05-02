@@ -72,7 +72,6 @@
 </script>
     <ul id="topMenu" class="nav pull-right">
 
-     <li class=""><a href="contact.html">Contact</a></li>
      <li> <a href="/register" role="button" data-toggle="modal" style="padding-right:0"><span class="btn btn-large btn-success">Sign Up</span></a></li>
      <li class="">
      <a href="/login" role="button" data-toggle="modal" style="padding-right:0"><span class="btn btn-large btn-success">Login</span></a>
