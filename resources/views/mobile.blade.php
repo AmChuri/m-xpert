@@ -135,7 +135,7 @@
 	<hr class="soft"/>
 
 	<hr class="soft"/>
-	<form class="form-horizontal span6">
+{{-- 	<form class="form-horizontal span6">
 		<div class="control-group">
 		  <label class="control-label alignL">Sort By </label>
 			<select>
@@ -145,7 +145,7 @@
               <option>Price Lowest first</option>
             </select>
 		</div>
-	  </form>
+	  </form> --}}
 	  
 <div id="myTab" class="pull-right">
  <a href="#listView" data-toggle="tab"><span class="btn btn-large"><i class="icon-list"></i></span></a>
@@ -181,7 +181,7 @@
 			</label><br/>
 			
 			  <a href=\"/product/add/".$getdata['id']."\" class=\"btn btn-large btn-primary\"> Add to <i class=\" icon-shopping-cart\"></i></a>
-			  <a href=\"product_details.html\" class=\"btn btn-large\"><i class=\"icon-zoom-in\"></i></a>
+			  
 			
 				</form>
 			</div>
@@ -207,7 +207,7 @@
 				  <p> 
 					".$getdata['subdescription']."
 				  </p>
-				   <h4 style=\"text-align:center\"><a class=\"btn\" href=\"product_details.html\"> <i class=\"icon-zoom-in\"></i></a> <a class=\"btn\" href=\"/product/add/".$getdata['id']."\">Add to <i class=\"icon-shopping-cart\"></i></a> <a class=\"btn btn-primary\" href=\"#\"> ₹ ".$getdata['price']."</a></h4>
+				   <h4 style=\"text-align:center\"><a class=\"btn\" href=\"/product/add/".$getdata['id']."\">Add to <i class=\"icon-shopping-cart\"></i></a> <a class=\"btn btn-primary\" href=\"#\"> ₹ ".$getdata['price']."</a></h4>
 				</div>
 			  </div>
 			</li>";
