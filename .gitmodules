@@ -1,3 +1,6 @@
 [submodule "demo"]
 	path = demo
 	url = https://github.com/kingman21/demo.git
+[submodule "nodenew"]
+	path = nodenew
+	url = https://github.com/kingman21/nodenew.git
